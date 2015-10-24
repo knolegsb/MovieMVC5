@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MovieMVC5.Models;
+using MovieMVC5.DAL;
 
 namespace MovieMVC5.Controllers
 {
@@ -14,11 +15,22 @@ namespace MovieMVC5.Controllers
     {
         private MovieDBContext db = new MovieDBContext();
 
-        // GET: Movies
+        //GET: Movies
         public ActionResult Index()
         {
             return View(db.Movies.ToList());
         }
+
+        //public ActionResult Index(string searchString)
+        //{
+        //    var movies = from m in db.Movies
+        //                 select m;
+        //    if(!String.IsNullOrEmpty(searchString))
+        //    {
+        //        movies = movies.Where(s => s.Title.Contains(searchString));
+        //    }
+        //    return View(movies);
+        //}
 
         // GET: Movies/Details/5
         public ActionResult Details(int? id)
